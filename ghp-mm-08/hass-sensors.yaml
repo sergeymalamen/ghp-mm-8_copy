@@ -1,0 +1,676 @@
+mqtt:
+  sensor:
+  - name: Service settings 1
+    state_topic: GHP/3/240/2100
+    unique_id: ghp/settings_1
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+  - name: Service settings 2
+    state_topic: GHP/3/240/2116
+    unique_id: ghp/settings_2
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+  - name: Service settings 3
+    state_topic: GHP/3/240/2132
+    unique_id: ghp/settings_3
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+  - name: Service settings 4
+    state_topic: GHP/3/240/2148
+    unique_id: ghp/settings_4
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+  - name: Service settings 5
+    state_topic: GHP/3/240/2164
+    unique_id: ghp/settings_5
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+  - name: Рабочая частота компрессора
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[0] }}'
+    device_class: frequency
+    unit_of_measurement: Hz
+    unique_id: ghp/Compressor-operating-frequency
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Открытие электронного расширительного клапана
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[1] }}'
+    unit_of_measurement: '%'
+    unique_id: ghp/Electronic-expansion-valve-opening
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Температура окружающей среды
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[2] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Ambient-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Температура на выходе
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[3] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Outlet-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Exhaust temperature
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[4] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Exhaust-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Suction temperature
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[5] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Suction-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Coil temperature
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[6] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Coil-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Температура на выходе расширительного клапана
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[7] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Expansion-valve-outlet-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Статус вентилятора
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[10] }}'
+    device_class:
+    unit_of_measurement:
+    unique_id: ghp/Fan-status
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Напряжение электросети
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[15] }}'
+    device_class: current
+    unit_of_measurement: A
+    unique_id: ghp/AC-input-current
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Входное напряжение
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[0] * 10 }}'
+    device_class: voltage
+    unit_of_measurement: V
+    unique_id: ghp/Input-voltage
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Oil return state
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[1] }}'
+    device_class:
+    unit_of_measurement:
+    unique_id: ghp/Oil-return-state
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Напряжение постоянного тока
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[4] }}'
+    device_class: voltage
+    unit_of_measurement: V
+    unique_id: ghp/DC-bus-voltage
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Compressor current
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[5] }}'
+    device_class: current
+    unit_of_measurement: A
+    unique_id: ghp/Compressor-current
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: PFC temperature
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[6] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/PFC-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: IPM temperature
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[7] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/IPM-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: DC fan speed-1
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[8] }}'
+    device_class: volume_flow_rate
+    unit_of_measurement: '%'
+    unique_id: ghp/DC-fan-speed-1
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: DC fan speed-2
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[9] }}'
+    device_class: volume_flow_rate
+    unit_of_measurement: '%'
+    unique_id: ghp/DC-fan-speed-2
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Economizer inlet temperature
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[10] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Economizer-inlet-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Economizer outlet temperature
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[11] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Economizer-outlet-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Water tank temperature/indoor temperature
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[12] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Water-tank-temperature/indoor-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Return water temperature
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[13] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/Return-water-temperature
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: EEV-2 opening 5
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[14] }}'
+    device_class:
+    unit_of_measurement: P
+    unique_id: ghp/EEV-2-opening-5
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: DC pump output
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[15] }}'
+    device_class: volume_flow_rate
+    unit_of_measurement: '%'
+    unique_id: ghp/DC-pump-output
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Low pressure saturation temperature
+    state_topic: GHP/10/240/332
+    value_template: '{{ value_json[0] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Water inlet pressure
+    state_topic: GHP/10/240/332
+    value_template: '{{ ( value_json[3] | int ) / 10 }}'
+    device_class: pressure
+    unit_of_measurement: bar
+    unique_id: ghp/Water-inlet-pressure
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Outlet pressure
+    state_topic: GHP/10/240/332
+    value_template: '{{ ( value_json[4] | int ) / 10 }}'
+    device_class: pressure
+    unit_of_measurement: bar
+    unique_id: ghp/Outlet-pressure
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Feedback flow
+    state_topic: GHP/10/240/332
+    value_template: '{{ value_json[5] / 10  }}'
+    device_class: volume_flow_rate
+    unit_of_measurement: m³/h
+    unique_id: ghp/Feedback-flow
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Water pump Feedback PWM%
+    state_topic: GHP/10/240/332
+    value_template: '{{ value_json[6] }}'
+    device_class: volume_flow_rate
+    unit_of_measurement: '%'
+    unique_id: ghp/Water-pump-Feedback-PWM
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: AC temp diff (S1)
+    state_topic: GHP/3/240/2100
+    value_template: '{{ value_json[0] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/ac_temp_diff_s1
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+  - name: DHW temp diff (S2)
+    state_topic: GHP/3/240/2100
+    value_template: '{{ value_json[1] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/dhw_temp_diff_s2
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+  - name: Outlet temp diff (S89)
+    state_topic: GHP/3/240/2180
+    value_template: '{{ value_json[8] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/outlet_temp_diff_s89
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+utility_meter:
+  tc_energy_dhw:
+    source: sensor.tc_summation_received_2
+    cycle: daily
+    name: "ТЧ потребление ГВС"
+    unique_id: tc_energy_dhw
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.ghp_mm08_solenoid_three_way_valve
+        state: "on"
+
+  tc_energy_heating:
+    source: sensor.tc_summation_received_2
+    cycle: daily
+    name: "ТЧ потребление отопление"
+    unique_id: tc_energy_heating
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.ghp_mm08_solenoid_three_way_valve
+        state: "off"
+ 
+
+
+binary_sensor:
+  - name: Pump status
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[8] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/Pump-status
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Four-way valve status
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[9] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/Four-way-valve-status
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Solenoid three-way valve
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[11] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/Solenoid-three-way-valve
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Solenoid two-way valve
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[12] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/Solenoid-two-way-valve
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Pipe electric heating
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[13] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/Pipe-electric-heating
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Electric water tank heating
+    state_topic: GHP/10/240/300
+    value_template: '{{ value_json[14] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/Electric-water-tank-heating
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: High pressure 2 state
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[2] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/High-pressure-2-state
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Chassis heating belt status
+    state_topic: GHP/10/240/316
+    value_template: '{{ value_json[3] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/Chassis-heating-belt-status
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Compressor heating belt status
+    state_topic: GHP/10/240/332
+    value_template: '{{ value_json[1] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/Compressor-heating-belt-status
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Plate heat exchanger heating belt status
+    state_topic: GHP/10/240/332
+    value_template: '{{ value_json[2] }}'
+    device_class:
+    payload_on: '1'
+    payload_off: '0'
+    unique_id: ghp/Plate-heat-exchanger-heating-belt-status
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Defrost
+    state_topic: GHP/10/240/1000
+    value_template: '{{ value_json[0] | bitwise_and(2) }}'
+    device_class:
+    payload_on: '2'
+    payload_off: '0'
+    unique_id: ghp/defrost
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Antifreeze
+    state_topic: GHP/10/240/1000
+    value_template: '{{ value_json[0] | bitwise_and(4) }}'
+    device_class:
+    payload_on: '4'
+    payload_off: '0'
+    unique_id: ghp/antifreeze
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+  - name: Night mode
+    state_topic: GHP/3/240/2000
+    value_template: '{{ value_json[2] | bitwise_and(16) }}'
+    device_class:
+    payload_on: '16'
+    payload_off: '0'
+    unique_id: ghp/night_mode
+    device:
+      identifiers: ghp-mm08
+      manufacturer: Grundig
+      name: GHP-MM08
+      model: MM08
+
+
+select:
+  - name: Operating mode
+    state_topic: GHP/3/240/2000
+    unique_id: ghp/operating_mode
+    options:
+      - Cooling
+      - Heating
+      - Auto
+      - DHW
+      - Cooling+DHW
+      - Heating+DHW
+    value_template: >
+      {% set opmodes = ({1:"Cooling",2:"Heating",4:"Auto",8:"DHW",9:"Cooling+DHW",10:"Heating+DHW"})
+      %}
+      {{ opmodes[value_json[0]] }}
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+    command_topic: GHP/set/240/2000
+    command_template: >
+      {% set opmodes = ({1:"Cooling",2:"Heating",4:"Auto",8:"DHW",9:"Cooling+DHW",10:"Heating+DHW"})
+      %}
+      {% for val in opmodes %}
+      {% if loop.index == this.attributes.options.index(value)+1 %}
+        {{ val }}
+      {% endif %}
+      {% endfor %}    
+
+number:
+  - name: Heating target
+    state_topic: GHP/3/240/2000
+    value_template: '{{ value_json[4] }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    unique_id: ghp/heating_target
+    command_topic: GHP/set/240/2004
+    command_template: '{{ value }}'
+    min: 25
+    max: 35
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+  - name: DHW target
+    state_topic: GHP/3/240/2000
+    value_template: '{{ value_json[5] }}'
+    unique_id: ghp/dhw_target
+    command_topic: GHP/set/240/2005
+    command_template: '{{ value }}'
+    device_class: temperature
+    unit_of_measurement: °C
+    min: 25
+    max: 55
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08
+
+switch:
+  - name: Main switch
+    state_topic: GHP/3/240/2000
+    unique_id: ghp/main_switch
+    command_topic: GHP/set/240/2001
+    value_template: '{{ value_json[1] }}'
+    payload_on: 1
+    payload_off: 0
+    device:
+      identifiers: ghp-mm08
+      name: GHP-MM08

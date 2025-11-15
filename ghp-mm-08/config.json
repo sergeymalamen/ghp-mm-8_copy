@@ -1,0 +1,15 @@
+{
+    "name": "ghp-mm-08",
+    "version": "1.0.0",
+    "slug": "ghp-mm-08",
+    "description": "Считывает данные USB ghp-mm-08",
+    "startup": "application",
+    "boot": "auto",
+    "init": false,
+    "panel_icon": "mdi:chip",
+    "arch": ["aarch64", "armv7", "amd64", "i386"],
+    "host_network": true,
+    "devices": ["/dev/ttyUSB0:/dev/ttyUSB0:rwm"],
+    "options": {},
+    "schema": {}
+}
