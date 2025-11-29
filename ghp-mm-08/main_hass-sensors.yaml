@@ -1,0 +1,148 @@
+mqtt:
+  sensor:
+    - name: Температура окружающей среды
+      state_topic: "GHP/10/240/300"
+      value_template: "{{ value_json[2] }}"
+      device_class: temperature
+      unit_of_measurement: "°C"
+      unique_id: "ghp/Ambient-temperature"
+      device:
+        identifiers: ["ghp-mm08"]
+        manufacturer: "Grundig"
+        name: "GHP-MM08"
+        model: "MM08"
+
+    - name: Температура на выходе
+      state_topic: "GHP/10/240/300"
+      value_template: "{{ value_json[3] }}"
+      device_class: temperature
+      unit_of_measurement: "°C"
+      unique_id: "ghp/Outlet-temperature"
+      device:
+        identifiers: ["ghp-mm08"]
+        manufacturer: "Grundig"
+        name: "GHP-MM08"
+        model: "MM08"
+
+    - name: Потребляемый ток
+      state_topic: "GHP/10/240/300"
+      value_template: "{{ value_json[15] }}"
+      device_class: current
+      unit_of_measurement: "A"
+      unique_id: "ghp/AC-input-current"
+      device:
+        identifiers: ["ghp-mm08"]
+        manufacturer: "Grundig"
+        name: "GHP-MM08"
+        model: "MM08"
+
+    - name: Входное напряжение
+      state_topic: "GHP/10/240/316"
+      value_template: "{{ value_json[0] | float * 10 }}"
+      device_class: voltage
+      unit_of_measurement: "V"
+      unique_id: "ghp/Input-voltage"
+      device:
+        identifiers: ["ghp-mm08"]
+        manufacturer: "Grundig"
+        name: "GHP-MM08"
+        model: "MM08"
+
+    - name: Ток потребления компрессором
+      state_topic: "GHP/10/240/316"
+      value_template: "{{ value_json[5] }}"
+      device_class: current
+      unit_of_measurement: "A"
+      unique_id: "ghp/Compressor-current"
+      device:
+        identifiers: ["ghp-mm08"]
+        manufacturer: "Grundig"
+        name: "GHP-MM08"
+        model: "MM08"
+
+    - name: Температура обратки
+      state_topic: "GHP/10/240/316"
+      value_template: "{{ value_json[13] }}"
+      device_class: temperature
+      unit_of_measurement: "°C"
+      unique_id: "ghp/Return-water-temperature"
+      device:
+        identifiers: ["ghp-mm08"]
+        manufacturer: "Grundig"
+        name: "GHP-MM08"
+        model: "MM08"
+
+    - name: Давление на выходе
+      state_topic: "GHP/10/240/332"
+      value_template: "{{ value_json[4] | float / 10 }}"
+      device_class: pressure
+      unit_of_measurement: "bar"
+      unique_id: "ghp/Outlet-pressure"
+      device:
+        identifiers: ["ghp-mm08"]
+        manufacturer: "Grundig"
+        name: "GHP-MM08"
+        model: "MM08"
+
+    - name: Объем обратки
+      state_topic: "GHP/10/240/332"
+      value_template: "{{ value_json[5] | float / 10 }}"
+      device_class: volume_flow_rate
+      unit_of_measurement: "m³/h"
+      unique_id: "ghp/Feedback-flow"
+      device:
+        identifiers: ["ghp-mm08"]
+        manufacturer: "Grundig"
+        name: "GHP-MM08"
+        model: "MM08"
+
+
+
+  switch:
+    - name: Включение
+      state_topic: "GHP/3/240/2000"
+      value_template: "{{ value_json[1] }}"
+      command_topic: "GHP/set/240/2001"
+      payload_on: "1"
+      payload_off: "0"
+      unique_id: "ghp/main_switch"
+      device:
+        identifiers: ["ghp-mm08"]
+        name: "GHP-MM08"
+
+  number:
+    - name: Температура нагрева
+      state_topic: "GHP/3/240/2000"
+      value_template: "{{ value_json[4] }}"
+      device_class: temperature
+      unit_of_measurement: "°C"
+      unique_id: "ghp/heating_target"
+      command_topic: "GHP/set/240/2004"
+      command_template: "{{ value }}"
+      min: 25
+      max: 55
+      device:
+        identifiers: ["ghp-mm08"]
+        name: "GHP-MM08"
+
+  select:
+    - name: Режим работы
+      state_topic: "GHP/3/240/2000"
+      unique_id: "ghp/operating_mode"
+      options:
+        - Cooling
+        - Heating
+        - Auto
+        - DHW
+        - Cooling+DHW
+        - Heating+DHW
+      value_template: >
+        {% set opmodes = {1:"Cooling",2:"Heating",4:"Auto",8:"DHW",9:"Cooling+DHW",10:"Heating+DHW"} %}
+        {{ opmodes[value_json[0]] }}
+      command_topic: "GHP/set/240/2000"
+      command_template: >
+        {% set opmodes = {"Cooling":1,"Heating":2,"Auto":4,"DHW":8,"Cooling+DHW":9,"Heating+DHW":10} %}
+        {{ opmodes[value] }}
+      device:
+        identifiers: ["ghp-mm08"]
+        name: "GHP-MM08"
