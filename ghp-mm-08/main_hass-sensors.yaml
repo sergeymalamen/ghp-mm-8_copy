@@ -1,5 +1,13 @@
 mqtt:
   sensor:
+    - name: "tc_summation_received_2"
+      state_topic: "ghp/fake_energy"
+      value_template: "{{ value | float }}"
+      unit_of_measurement: "kWh"
+      device_class: energy
+      unique_id: "tc_summation_received_2"
+
+
     - name: Температура окружающей среды
       state_topic: "GHP/10/240/300"
       value_template: "{{ value_json[2] }}"
@@ -11,6 +19,8 @@ mqtt:
         manufacturer: "Grundig"
         name: "GHP-MM08"
         model: "MM08"
+
+
 
     - name: Температура на выходе
       state_topic: "GHP/10/240/300"
@@ -42,18 +52,6 @@ mqtt:
       device_class: voltage
       unit_of_measurement: "V"
       unique_id: "ghp/Input-voltage"
-      device:
-        identifiers: ["ghp-mm08"]
-        manufacturer: "Grundig"
-        name: "GHP-MM08"
-        model: "MM08"
-
-    - name: Ток потребления компрессором
-      state_topic: "GHP/10/240/316"
-      value_template: "{{ value_json[5] }}"
-      device_class: current
-      unit_of_measurement: "A"
-      unique_id: "ghp/Compressor-current"
       device:
         identifiers: ["ghp-mm08"]
         manufacturer: "Grundig"
@@ -110,11 +108,12 @@ mqtt:
         identifiers: ["ghp-mm08"]
         name: "GHP-MM08"
 
+
+
   number:
-    - name: Температура нагрева
+    - name: "Температура нагрева"
       state_topic: "GHP/3/240/2000"
       value_template: "{{ value_json[4] }}"
-      device_class: temperature
       unit_of_measurement: "°C"
       unique_id: "ghp/heating_target"
       command_topic: "GHP/set/240/2004"
@@ -126,7 +125,7 @@ mqtt:
         name: "GHP-MM08"
 
   select:
-    - name: Режим работы
+    - name: "Режим работы"
       state_topic: "GHP/3/240/2000"
       unique_id: "ghp/operating_mode"
       options:
@@ -145,4 +144,15 @@ mqtt:
         {{ opmodes[value] }}
       device:
         identifiers: ["ghp-mm08"]
-        name: "GHP-MM08"
+
+        
+sensor:
+  - platform: template
+    sensors:
+      tc_spotreba_topeni:
+        unit_of_measurement: kWh
+        device_class: energy
+        friendly_name: "TČ spotřeba topení"
+        unique_id: tc_spotreba_topeni
+        availability_template: "{{ is_state('binary_sensor.ghp_mm08_solenoid_three_way_valve','off') }}"
+        value_template: "{{ states('sensor.ghp_mm08_tc_summation_received_2') | float }}"
